@@ -97,5 +97,26 @@
 
   body {
     @apply bg-background text-foreground;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
   }
+}
+
+#info {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  color: white;
+  font-family: Arial, sans-serif;
+  font-size: 12px;
+}
+
+#info a {
+  color: #00aaff;
+  text-decoration: none;
+}
+
+#info a:hover {
+  color: #0088cc;
 }
