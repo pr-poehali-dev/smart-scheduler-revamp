@@ -1,35 +1,37 @@
 import { Canvas } from '@react-three/fiber'
-import { KinectScene } from '@/components/kinect-scene'
+import { EyeScene } from '@/components/eye-scene'
 import { Leva } from 'leva'
 
 export default function Index() {
   return (
-    <div className="w-full h-screen">
+    <div className="w-full h-screen relative bg-[#0a0a12]">
       <Canvas
         camera={{
-          position: [0, 0, 500],
-          fov: 50,
-          near: 1,
-          far: 10000
+          position: [0, 0, 1.8],
+          fov: 45,
+          near: 0.01,
+          far: 1000,
         }}
-        gl={{ alpha: false }}
-        scene={{ background: null }}
+        gl={{ alpha: false, antialias: false }}
       >
-        <KinectScene />
+        <EyeScene />
       </Canvas>
+
       <Leva collapsed={true} />
-      <div className="absolute top-4 left-4 text-black font-medium font-sans text-2xl">
-        Voxel Canvas
+
+      {/* Заголовок */}
+      <div className="absolute top-6 left-6 pointer-events-none">
+        <div className="text-white/90 font-light text-xl tracking-[0.3em] uppercase">
+          Human Eye
+        </div>
+        <div className="text-white/35 text-xs tracking-widest mt-1">
+          voxel · 3d · interactive
+        </div>
       </div>
-      <div className="absolute bottom-4 right-4 text-black font-medium font-sans text-xl">
-        <a
-          href="https://threejs.org/"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="hover:underline"
-        >
-          Работает на Three.js
-        </a>
+
+      {/* Подсказка */}
+      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 text-white/25 text-xs tracking-widest uppercase pointer-events-none">
+        move cursor to look around
       </div>
     </div>
   )
